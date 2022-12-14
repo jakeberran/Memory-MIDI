@@ -1,7 +1,11 @@
 // Data for Six Etudes for bass clarinet and electronics
 
 // Folder with midi files
-exports.midiFolder = 'C:/Users/jacob/Local Documents/Ableton/User Library/Presets/Audio Effects/Max Audio Effect/Clarinet Piece Patch/Six Etudes/Cut Midi Files'
+exports.midiFolder = 'C:/Users/jacob/Local Documents/Ableton/User Library/Presets/Audio Effects/Max Audio Effect/Memory MIDI/Six Etudes/Cut Midi Files'
+
+if (exports.midiFolder.charAt(exports.midiFolder.length - 1) != '/') {
+  exports.midiFolder += '/'
+}
 
 // Buffer names
 exports.bufferNames = [];
@@ -898,5 +902,53 @@ exports.stageData = [
   {
     midi: false
   },
+
+  { // final messy thing
+    play: [
+      {
+        channel: 1,
+        name: 'stage2_1',
+        speed: 0.5,
+        gainAdjust: -10
+      },
+      {
+        channel: 2,
+        name: 'stage3_8',
+        speed: 1,
+        gainAdjust: -10
+      },
+      {
+        channel: 3,
+        name: 'stage5_2',
+        speed: 0.2,
+        gainAdjust: -10
+      }
+    ],
+    loop: [
+      {
+        channel: 1,
+        name: 'stage4_2',
+        speed: 2,
+        gainAdjust: -10
+      },
+      {
+        channel: 2,
+        name: 'stage5_1',
+        speed: 3.5,
+        gainAdjust: -10
+      }
+    ]
+  },
+
+  {
+    play: {
+      stop: true,
+      channels: [1,2,3]
+    },
+    loop: {
+      stop: true,
+      channels: [1,2]
+    }
+  }
 
 ]

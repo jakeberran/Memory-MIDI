@@ -1,15 +1,15 @@
 var data;
 
+autowatch = 1;
+
+var clearMsg = this.patcher.getnamed('buffer_clearer');
+
 function load(jsFilename) {
   post(jsFilename);
   data = require(jsFilename);
   deleteBuffers();
   createBuffers();
 }
-
-autowatch = 1;
-
-var clearMsg = this.patcher.getnamed('buffer_clearer');
 
 function createBuffers() {
   var totalCount = 0;

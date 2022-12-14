@@ -7,6 +7,7 @@ function load(jsFilename) {
   try {
     midiFolder = data.midiFolder
     stageData = data.stageData
+    this.patcher.getnamed('numOfStages').message(stageData.length)
   } catch (error) {
     post('Error in loading data:', error)
   }
