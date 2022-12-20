@@ -27,12 +27,15 @@ MVT_4_TEMPO = 80;
 
 // Stage data
 exports.stageData = [
-  // 1
+  1,
+
   {
     rec: {
       name: 'stage1_1'
     }
   },
+
+  2,
 
   {
     rec: {
@@ -54,13 +57,12 @@ exports.stageData = [
     rec: false
   },
 
-  // 6
   {
     midi: {
       sampleName: 'stage2_2',
       fileName: 'fast 1 a1.mid',
       useLoop: false,
-      gainAdjust: 0,
+      gainAdjust: -8,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: -7
@@ -72,7 +74,7 @@ exports.stageData = [
       sampleName: 'stage2_2',
       fileName: 'fast 1 b1.mid',
       useLoop: false,
-      gainAdjust: 0,
+      gainAdjust: -8,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: -7
@@ -84,7 +86,7 @@ exports.stageData = [
       sampleName: 'stage2_2',
       fileName: 'fast 1 c1.mid',
       useLoop: true,
-      gainAdjust: 0,
+      gainAdjust: -8,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 0.5,
       transpose: 12
@@ -120,7 +122,7 @@ exports.stageData = [
       sampleName: 'stage2_2',
       fileName: 'fast 1 a3.mid',
       useLoop: false,
-      gainAdjust: 20,
+      gainAdjust: 0,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: -7
@@ -132,7 +134,7 @@ exports.stageData = [
       sampleName: 'stage2_1',
       fileName: 'fast 1 end.mid',
       useLoop: false,
-      gainAdjust: 20,
+      gainAdjust: 0,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: 0
@@ -143,7 +145,8 @@ exports.stageData = [
     // do nothing
   },
 
-  // III
+  3, // MOVEMENT III
+
   {
     rec: {
       name: 'stage3_1' // the Eb one
@@ -159,7 +162,7 @@ exports.stageData = [
       sampleName: 'stage3_1',
       fileName: 'mvt 3 a.mid',
       useLoop: false,
-      gainAdjust: -10,
+      gainAdjust: -2,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 9,
@@ -186,7 +189,7 @@ exports.stageData = [
       sampleName: 'stage3_1',
       fileName: 'mvt 3 b.mid',
       useLoop: false,
-      gainAdjust: -10,
+      gainAdjust: -2,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 9,
@@ -199,7 +202,7 @@ exports.stageData = [
       sampleName: 'stage3_2',
       fileName: 'mvt 3 c.mid',
       useLoop: false,
-      gainAdjust: -10,
+      gainAdjust: -2,
       tempo: MVT_3_TEMPO,
       sampleSpeed: -1,
       transpose: 2,
@@ -236,7 +239,7 @@ exports.stageData = [
       fileName: 'mvt 3 d.mid', // first part of B section
       sampleName: 'stage3_3',
       useLoop: true,
-      gainAdjust: -40,
+      gainAdjust: -35,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 2,
       transpose: -5, // +7 minus an octave
@@ -264,7 +267,7 @@ exports.stageData = [
       fileName: 'mvt 3 e.mid', // b section of b section
       sampleName: 'stage3_4', // 542124
       useLoop: true,
-      gainAdjust: -40,
+      gainAdjust: -35,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 2,
       transpose: -11, // +1 minus an octave bc double speed
@@ -287,7 +290,7 @@ exports.stageData = [
       fileName: 'mvt 3 f.mid',
       sampleName: 'stage3_6',
       useLoop: false,
-      gainAdjust: -10,
+      gainAdjust: 10,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 21,
@@ -331,7 +334,7 @@ exports.stageData = [
       fileName: 'mvt 3 h.mid',
       sampleName: 'stage3_8',
       useLoop: false,
-      gainAdjust: -10,
+      gainAdjust: -15,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 21,
@@ -354,7 +357,7 @@ exports.stageData = [
       fileName: 'mvt 3 i.mid',
       sampleName: 'stage3_9',
       useLoop: false,
-      gainAdjust: -10,
+      gainAdjust: 0,
       tempo: MVT_3_TEMPO,
       sampleSpeed: -1,
       transpose: -3,
@@ -375,7 +378,7 @@ exports.stageData = [
       fileName: 'mvt 3 j.mid',
       sampleName: 'stage3_10', 
       useLoop: false,
-      gainAdjust: -10,
+      gainAdjust: 0,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 9,
@@ -387,7 +390,8 @@ exports.stageData = [
     // end of third movement
   },
 
-  // IV
+  4, // MOVEMENT IV
+
   {
     rec: {
       name: 'stage4_1'
@@ -414,14 +418,14 @@ exports.stageData = [
         channel: 1,
         name: 'stage4_1',
         speed: 0.11,
-        gainAdjust: -40
+        gainAdjust: -35
       },
       {
         channel: 2,
         name: 'stage4_1',
         speed: 0.005,
         pitch: -2,
-        gainAdjust: -40
+        gainAdjust: -35
       }
     ],
 
@@ -434,7 +438,7 @@ exports.stageData = [
       fileName: '4a.mid',
       sampleName: 'stage4_2', 
       useLoop: false,
-      gainAdjust: 20,
+      gainAdjust: -10,
       tempo: MVT_4_TEMPO,
       sampleSpeed: 1,
       transpose: -2,
@@ -468,7 +472,7 @@ exports.stageData = [
       fileName: '4b.mid',
       sampleName: 'stage4_2', 
       useLoop: false,
-      gainAdjust: 30,
+      gainAdjust: -10,
       tempo: MVT_4_TEMPO,
       sampleSpeed: -1,
       transpose: -2,
@@ -486,14 +490,14 @@ exports.stageData = [
         channel: 1,
         name: 'stage4_1',
         speed: 0.11,
-        gainAdjust: -40
+        gainAdjust: -35
       },
       {
         channel: 2,
         name: 'stage4_1',
         speed: 0.005,
         pitch: -2,
-        gainAdjust: -40
+        gainAdjust: -35
       }
     ],
 
@@ -518,7 +522,7 @@ exports.stageData = [
       fileName: '4c.mid',
       sampleName: 'stage4_2', 
       useLoop: false,
-      gainAdjust: 0,
+      gainAdjust: -10,
       tempo: MVT_4_TEMPO,
       sampleSpeed: 1,
       transpose: -2,
@@ -641,7 +645,7 @@ exports.stageData = [
       fileName: '4g.mid',
       sampleName: 'stage4_6', 
       useLoop: true,
-      gainAdjust: 30,
+      gainAdjust: 0,
       tempo: MVT_4_TEMPO,
       sampleSpeed: 1,
       transpose: 5,
@@ -677,7 +681,7 @@ exports.stageData = [
       fileName: '4i.mid',
       sampleName: 'stage4_3', 
       useLoop: false,
-      gainAdjust: 20,
+      gainAdjust: 10,
       tempo: MVT_4_TEMPO,
       sampleSpeed: 1,
       transpose: -7,
@@ -690,7 +694,7 @@ exports.stageData = [
       fileName: '4j.mid',
       sampleName: 'stage4_5', 
       useLoop: true,
-      gainAdjust: -25,
+      gainAdjust: -10,
       tempo: MVT_4_TEMPO,
       sampleSpeed: 1,
       transpose: -2,
@@ -729,13 +733,13 @@ exports.stageData = [
         channel: 1,
         name: 'stage4_1',
         speed: 75,
-        gainAdjust: -40
+        gainAdjust: -50
       },
       {
         channel: 2,
         name: 'stage4_1',
         speed: 80,
-        gainAdjust: -40
+        gainAdjust: -50
       }
     ],
 
@@ -750,7 +754,8 @@ exports.stageData = [
     }
   },
 
-  // START OF MOVEMENT V
+  5, // START OF MOVEMENT V
+
   {
     rec: {
       name: 'stage5_1'
@@ -809,7 +814,7 @@ exports.stageData = [
       sampleName: 'stage5_3',
       fileName: '5c.mid',
       useLoop: false,
-      gainAdjust: -20,
+      gainAdjust: -10,
       tempo: 132,
       sampleSpeed: 1,
       transpose: 5
@@ -820,7 +825,8 @@ exports.stageData = [
     midi: false
   },
 
-  // START OF MOVEMENT VI
+  6, // MOVEMENT VI
+  
   {
     play: {
       name: 'stage1_1',
@@ -835,7 +841,7 @@ exports.stageData = [
       sampleName: 'stage2_2',
       fileName: '6random2.mid',
       useLoop: false,
-      gainAdjust: -30,
+      gainAdjust: -40,
       tempo: 110,
       sampleSpeed: 1,
       transpose: -7
@@ -852,14 +858,14 @@ exports.stageData = [
         channel: 1,
         name: 'stage4_1',
         speed: 0.11,
-        gainAdjust: 20
+        gainAdjust: 5
       },
       {
         channel: 2,
         name: 'stage4_1',
         speed: 0.005,
         pitch: -2,
-        gainAdjust: 20
+        gainAdjust: 5
       }
     ]
   },
@@ -876,7 +882,7 @@ exports.stageData = [
       sampleName: 'stage3_1',
       fileName: '6random1.mid',
       useLoop: true,
-      gainAdjust: 25,
+      gainAdjust: -5,
       tempo: 100,
       sampleSpeed: 1,
       transpose: 9
@@ -892,7 +898,7 @@ exports.stageData = [
       sampleName: 'stage2_2',
       fileName: 'fast 1 a1.mid',
       useLoop: false,
-      gainAdjust: 20,
+      gainAdjust: -10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: -7
@@ -909,19 +915,19 @@ exports.stageData = [
         channel: 1,
         name: 'stage2_1',
         speed: 0.5,
-        gainAdjust: -10
+        gainAdjust: -50
       },
       {
         channel: 2,
         name: 'stage3_8',
         speed: 1,
-        gainAdjust: -10
+        gainAdjust: -50
       },
       {
         channel: 3,
         name: 'stage5_2',
         speed: 0.2,
-        gainAdjust: -10
+        gainAdjust: -50
       }
     ],
     loop: [
@@ -929,13 +935,13 @@ exports.stageData = [
         channel: 1,
         name: 'stage4_2',
         speed: 2,
-        gainAdjust: -10
+        gainAdjust: -50
       },
       {
         channel: 2,
         name: 'stage5_1',
         speed: 3.5,
-        gainAdjust: -10
+        gainAdjust: -50
       }
     ]
   },
@@ -950,5 +956,4 @@ exports.stageData = [
       channels: [1,2]
     }
   }
-
 ]

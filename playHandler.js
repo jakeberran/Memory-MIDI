@@ -42,7 +42,7 @@ function startPlay(name, speed, transpose, gainAdjust, channel) {
   }
 
   // set the start point
-  if (speed < 0) { // TODO clean this up, for some reason it works
+  if (speed < 0) {
     playStartPoint = this.patcher.getnamed('play' + String(channel) + 'StartPoint')
     playStartPoint.message(['set', recording.duration])
   }

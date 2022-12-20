@@ -1,17 +1,57 @@
 var midiFolder;
 var stageData;
+var movements;
 
 function load(jsFilename) {
   // post(jsFilename)
   data = require(jsFilename)
   try {
     midiFolder = data.midiFolder
-    stageData = data.stageData
+    stageData = [];
+    movements = {}; // treat as array, with integer keys
+    // post('orig length', data.stageData.length)
+    for (i = 0; i < data.stageData.length; i++) {
+      stageDatum = data.stageData[i];
+      if (typeof stageDatum ==  'number') {
+        movements[stageDatum] = {
+          stageNum: i - stageDatum + 1, // so movement 1 starts at 0, and each one is adjusted by one more
+          enabled: true // TODO when to change enabled
+        }
+      }
+      else {
+        stageData.push(stageDatum)
+      }
+    }
+    // post('split length', stageData.length, '+', Object.keys(movements).length)
+    // TODO break it up into stageData (filtered to remove plain ints) and movementIndices
+    // TODO (which is the index of that one minus whatever movement number that is)
+    // TODO also have this edit the values of the number hotkey stage numbers
     this.patcher.getnamed('numOfStages').message(stageData.length)
   } catch (error) {
-    post('Error in loading data:', error)
+    post('Error in loading data:', error.message)
   }
   // post('Getting MIDI files from', midiFolder)
+}
+
+// Update the movements which are included
+function setMovements() {
+  try {
+    binaryArray = arguments
+
+    for (i = 0; i < Object.keys(binaryArray).length; i++) {
+      // post(JSON.stringify(movements[i+1]))
+      if (binaryArray[i] == 1) {
+        movements[i+1].enabled = true;
+      }
+      else {
+        movements[i+1].enabled = false;
+      }
+    }
+    // post(JSON.stringify(movements))
+  }
+  catch (error) {
+    post(error.message)
+  }
 }
 
 
@@ -365,9 +405,31 @@ function msg_int(n) {
     }
     else if (n > stageData.length) {
       post('ALL STAGES DONE')
+      this.patcher.getnamed('counter').message('dec')
     }
     else {
-      handleStageChange(n);
+      mvts = Object.keys(movements).map(function(key) {
+        return movements[key];
+      })
+      // post(JSON.stringify(mvts))
+      try {
+        for (i = 0; i < mvts.length - 1; i++) { // minus one because we take adjacent pairs of movement stage numbers as the ranges
+          if (mvts[i].stageNum <= n && n < mvts[i+1].stageNum) { // is within the ith movement (from that stageNum), inclusive of that movement's stated stageNum
+            if (mvts[i].enabled) {
+              handleStageChange(n);
+            }
+            else if (mvts[i+1]) { // movement not enabled, so recursively go to the next movement start if applicable
+              post('SKIPPING MVT', i+1)
+              cntr = this.patcher.getnamed('counter')
+              cntr.message(['set', mvts[i+1].stageNum])
+              cntr.message('bang')
+            }
+            break; // stop the loop once we've found the movement we're potentially in
+          }
+        }
+      } catch (error) {
+        post('Error in processing non-zero valid stage number: ', error.message)
+      }
     }
   }
 

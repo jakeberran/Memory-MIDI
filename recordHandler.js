@@ -30,7 +30,6 @@ function startRec(name) {
 }
 
 // Function for receiving all input
-// TODO get the arguments
 function msg() {
   // post('\nARGS', arguments.length)
   var l = arguments;

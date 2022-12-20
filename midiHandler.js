@@ -51,9 +51,10 @@ function startMidi(sampleName, fileName, useLoop, sampleSpeed, tempo, gainAdjust
   outlet(SET_MIDI_SPEED, ['start', Math.floor(1024*tempo/120)]);
 
   // set gain adjust
+  post('GAIN', gainAdjust)
   tempgain = 128 + parseInt(gainAdjust)
-  post('gain is', tempgain)
-  outlet(SET_GAIN_ADJUST, tempgain)
+  post(typeof tempgain)
+  outlet(8, tempgain)
 
   // set the transpose
   midiTranspose = this.patcher.getnamed('midiTranspose'); // [' + String(i) + ']
@@ -77,7 +78,7 @@ function startMidi(sampleName, fileName, useLoop, sampleSpeed, tempo, gainAdjust
   }
 
   // set the start point
-  if (sampleSpeed < 0) { // TODO clean this up, for some reason it works
+  if (sampleSpeed < 0) {
     if (useLoop) {
       messageGroove(['loopend', 0])
     }
