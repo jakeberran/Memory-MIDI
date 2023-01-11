@@ -17,6 +17,7 @@ function createBuffers() {
     bufferName = data.bufferNames[i];
     var objName = "buffer~ " + bufferName + " 180000" // max length of a minute
     var buffer = this.patcher.newdefault(1800, 200 + 50*totalCount, objName)
+    buffer.varname = 'buffer_' + bufferName
     this.patcher.connect(clearMsg, 0, buffer, 0);
     totalCount++
   }

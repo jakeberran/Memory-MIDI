@@ -14,7 +14,7 @@ var numOfBuffers = [1, 2, 10, 10, 3]
 
 for (var k = 0; k < numOfBuffers.length; k++) {
   for (var i = 1; i <= numOfBuffers[k]; i++) {
-    exports.bufferNames.push("stage" + String(k+1) + '_' + String(i))
+    exports.bufferNames.push("rec" + String(k+1) + '_' + String(i))
   }
 }
 
@@ -31,7 +31,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage1_1'
+      name: 'rec1_1'
     }
   },
 
@@ -39,7 +39,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage2_2'
+      name: 'rec2_2'
     }
   },
 
@@ -49,7 +49,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage2_1'
+      name: 'rec2_1'
     }
   },
 
@@ -59,7 +59,7 @@ exports.stageData = [
 
   {
     midi: {
-      sampleName: 'stage2_2',
+      sampleName: 'rec2_2',
       fileName: 'fast 1 a1.mid',
       useLoop: false,
       gainAdjust: -8,
@@ -71,7 +71,7 @@ exports.stageData = [
 
   {
     midi: {
-      sampleName: 'stage2_2',
+      sampleName: 'rec2_2',
       fileName: 'fast 1 b1.mid',
       useLoop: false,
       gainAdjust: -8,
@@ -83,7 +83,7 @@ exports.stageData = [
   
   {
     midi: {
-      sampleName: 'stage2_2',
+      sampleName: 'rec2_2',
       fileName: 'fast 1 c1.mid',
       useLoop: true,
       gainAdjust: -8,
@@ -95,7 +95,7 @@ exports.stageData = [
 
   {
     midi: {
-      sampleName: 'stage2_1',
+      sampleName: 'rec2_1',
       fileName: 'fast 1 c2.mid',
       useLoop: true,
       gainAdjust: 0,
@@ -107,7 +107,7 @@ exports.stageData = [
 
   {
     midi: {
-      sampleName: 'stage2_1',
+      sampleName: 'rec2_1',
       fileName: 'fast 1 a2.mid',
       useLoop: false,
       gainAdjust: 0,
@@ -119,7 +119,7 @@ exports.stageData = [
 
   {
     midi: {
-      sampleName: 'stage2_2',
+      sampleName: 'rec2_2',
       fileName: 'fast 1 a3.mid',
       useLoop: false,
       gainAdjust: 0,
@@ -131,7 +131,7 @@ exports.stageData = [
 
   {
     midi: {
-      sampleName: 'stage2_1',
+      sampleName: 'rec2_1',
       fileName: 'fast 1 end.mid',
       useLoop: false,
       gainAdjust: 0,
@@ -149,7 +149,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_1' // the Eb one
+      name: 'rec3_1' // the Eb one
     }
   },
 
@@ -159,7 +159,7 @@ exports.stageData = [
 
   {
     midi: {
-      sampleName: 'stage3_1',
+      sampleName: 'rec3_1',
       fileName: 'mvt 3 a.mid',
       useLoop: false,
       gainAdjust: -2,
@@ -175,7 +175,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_2' // the Db one
+      name: 'rec3_2' // the Db one
     }
   },
 
@@ -186,7 +186,7 @@ exports.stageData = [
   {
     
     midi: {
-      sampleName: 'stage3_1',
+      sampleName: 'rec3_1',
       fileName: 'mvt 3 b.mid',
       useLoop: false,
       gainAdjust: -2,
@@ -199,7 +199,7 @@ exports.stageData = [
 
   { 
     midi: {
-      sampleName: 'stage3_2',
+      sampleName: 'rec3_2',
       fileName: 'mvt 3 c.mid',
       useLoop: false,
       gainAdjust: -2,
@@ -212,7 +212,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_3' // the 124542
+      name: 'rec3_3' // the 124542
     }
   },
 
@@ -222,7 +222,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_4' // the 542124
+      name: 'rec3_4' // the 542124
     }
   },
 
@@ -232,12 +232,12 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_5' // the CGCBABAGFGA
+      name: 'rec3_5' // the CGCBABAGFGA
     },
 
     midi: {
       fileName: 'mvt 3 d.mid', // first part of B section
-      sampleName: 'stage3_3',
+      sampleName: 'rec3_3',
       useLoop: true,
       gainAdjust: -35,
       tempo: MVT_3_TEMPO,
@@ -255,7 +255,7 @@ exports.stageData = [
 
   {
     play: {
-      name: 'stage3_5',
+      name: 'rec3_5',
       speed: -1,
       gainAdjust: -15,
       pitch: 12
@@ -265,7 +265,7 @@ exports.stageData = [
   {
     midi: {
       fileName: 'mvt 3 e.mid', // b section of b section
-      sampleName: 'stage3_4', // 542124
+      sampleName: 'rec3_4', // 542124
       useLoop: true,
       gainAdjust: -35,
       tempo: MVT_3_TEMPO,
@@ -277,7 +277,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_6' // first
+      name: 'rec3_6' // first
     }
   },
 
@@ -288,7 +288,7 @@ exports.stageData = [
   {
     midi: {
       fileName: 'mvt 3 f.mid',
-      sampleName: 'stage3_6',
+      sampleName: 'rec3_6',
       useLoop: false,
       gainAdjust: 10,
       tempo: MVT_3_TEMPO,
@@ -300,7 +300,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_7' // second
+      name: 'rec3_7' // second
     }
   },
 
@@ -311,7 +311,7 @@ exports.stageData = [
   {
     midi: {
       fileName: 'mvt 3 g.mid',
-      sampleName: 'stage3_7',
+      sampleName: 'rec3_7',
       useLoop: false,
       gainAdjust: -10,
       tempo: MVT_3_TEMPO,
@@ -323,7 +323,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_8' // third
+      name: 'rec3_8' // third
     }
   },
 
@@ -332,7 +332,7 @@ exports.stageData = [
 
     midi: {
       fileName: 'mvt 3 h.mid',
-      sampleName: 'stage3_8',
+      sampleName: 'rec3_8',
       useLoop: false,
       gainAdjust: -15,
       tempo: MVT_3_TEMPO,
@@ -344,7 +344,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_9' // fourth
+      name: 'rec3_9' // fourth
     }
   },
 
@@ -355,7 +355,7 @@ exports.stageData = [
   {
     midi: {
       fileName: 'mvt 3 i.mid',
-      sampleName: 'stage3_9',
+      sampleName: 'rec3_9',
       useLoop: false,
       gainAdjust: 0,
       tempo: MVT_3_TEMPO,
@@ -367,7 +367,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage3_10' // fifth
+      name: 'rec3_10' // fifth
     }
   },
 
@@ -376,7 +376,7 @@ exports.stageData = [
 
     midi: {
       fileName: 'mvt 3 j.mid',
-      sampleName: 'stage3_10', 
+      sampleName: 'rec3_10', 
       useLoop: false,
       gainAdjust: 0,
       tempo: MVT_3_TEMPO,
@@ -394,7 +394,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage4_1'
+      name: 'rec4_1'
     }
   },
 
@@ -404,7 +404,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage4_2'
+      name: 'rec4_2'
     }
   },
 
@@ -416,13 +416,13 @@ exports.stageData = [
     loop: [
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.11,
         gainAdjust: -35
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.005,
         pitch: -2,
         gainAdjust: -35
@@ -436,7 +436,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4a.mid',
-      sampleName: 'stage4_2', 
+      sampleName: 'rec4_2', 
       useLoop: false,
       gainAdjust: -10,
       tempo: MVT_4_TEMPO,
@@ -450,13 +450,13 @@ exports.stageData = [
     loop: [
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.11,
         gainAdjust: -15
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.005,
         pitch: -2,
         gainAdjust: -15
@@ -470,7 +470,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4b.mid',
-      sampleName: 'stage4_2', 
+      sampleName: 'rec4_2', 
       useLoop: false,
       gainAdjust: -10,
       tempo: MVT_4_TEMPO,
@@ -482,19 +482,19 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage4_3'
+      name: 'rec4_3'
     },
 
     loop: [
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.11,
         gainAdjust: -35
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.005,
         pitch: -2,
         gainAdjust: -35
@@ -511,7 +511,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage4_4'
+      name: 'rec4_4'
     }
   },
 
@@ -520,7 +520,7 @@ exports.stageData = [
 
     midi: {
       fileName: '4c.mid',
-      sampleName: 'stage4_2', 
+      sampleName: 'rec4_2', 
       useLoop: false,
       gainAdjust: -10,
       tempo: MVT_4_TEMPO,
@@ -532,7 +532,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage4_6'
+      name: 'rec4_6'
     }
   },
 
@@ -542,13 +542,13 @@ exports.stageData = [
     loop: [ // last loud
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.11,
         gainAdjust: -10
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.005,
         pitch: -2,
         gainAdjust: -10
@@ -563,14 +563,14 @@ exports.stageData = [
     loop: [ // low
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.2,
         pitch: -25,
         gainAdjust: -30
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.15,
         pitch: -24,
         gainAdjust: -30
@@ -579,7 +579,7 @@ exports.stageData = [
 
     midi: {
       fileName: '4d.mid',
-      sampleName: 'stage4_2', 
+      sampleName: 'rec4_2', 
       useLoop: false,
       gainAdjust: 0,
       tempo: MVT_4_TEMPO,
@@ -595,7 +595,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4e.mid',
-      sampleName: 'stage4_2', 
+      sampleName: 'rec4_2', 
       useLoop: false,
       gainAdjust: 0,
       tempo: MVT_4_TEMPO,
@@ -608,7 +608,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4f.mid',
-      sampleName: 'stage4_4', 
+      sampleName: 'rec4_4', 
       useLoop: false,
       gainAdjust: 0,
       tempo: MVT_4_TEMPO,
@@ -622,14 +622,14 @@ exports.stageData = [
     loop: [ // med
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.3,
         pitch: -13,
         gainAdjust: -25
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.2,
         pitch: -12,
         gainAdjust: -25
@@ -643,7 +643,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4g.mid',
-      sampleName: 'stage4_6', 
+      sampleName: 'rec4_6', 
       useLoop: true,
       gainAdjust: 0,
       tempo: MVT_4_TEMPO,
@@ -656,7 +656,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4h.mid',
-      sampleName: 'stage4_3', 
+      sampleName: 'rec4_3', 
       useLoop: false,
       gainAdjust: 0,
       tempo: MVT_4_TEMPO,
@@ -668,7 +668,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage4_5'
+      name: 'rec4_5'
     }
   },
 
@@ -679,7 +679,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4i.mid',
-      sampleName: 'stage4_3', 
+      sampleName: 'rec4_3', 
       useLoop: false,
       gainAdjust: 10,
       tempo: MVT_4_TEMPO,
@@ -692,7 +692,7 @@ exports.stageData = [
   {
     midi: {
       fileName: '4j.mid',
-      sampleName: 'stage4_5', 
+      sampleName: 'rec4_5', 
       useLoop: true,
       gainAdjust: -10,
       tempo: MVT_4_TEMPO,
@@ -704,14 +704,14 @@ exports.stageData = [
     loop: [
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.5,
         pitch: 3,
         gainAdjust: -25
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.75,
         pitch: -1,
         gainAdjust: -25
@@ -731,13 +731,13 @@ exports.stageData = [
     loop: [
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 75,
         gainAdjust: -50
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 80,
         gainAdjust: -50
       }
@@ -758,7 +758,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage5_1'
+      name: 'rec5_1'
     },
 
     reverb: 0.25,
@@ -767,7 +767,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage5_2'
+      name: 'rec5_2'
     }
   },
 
@@ -777,7 +777,7 @@ exports.stageData = [
 
   {
     rec: {
-      name: 'stage5_3'
+      name: 'rec5_3'
     }
   },
 
@@ -787,7 +787,7 @@ exports.stageData = [
 
   { // CEF#
     midi: {
-      sampleName: 'stage5_1',
+      sampleName: 'rec5_1',
       fileName: '5a.mid',
       useLoop: false,
       gainAdjust: -20,
@@ -799,7 +799,7 @@ exports.stageData = [
 
   { // CDb
     midi: {
-      sampleName: 'stage5_2',
+      sampleName: 'rec5_2',
       fileName: '5b.mid',
       useLoop: true,
       gainAdjust: -20,
@@ -811,7 +811,7 @@ exports.stageData = [
 
   { // CEF#
     midi: {
-      sampleName: 'stage5_3',
+      sampleName: 'rec5_3',
       fileName: '5c.mid',
       useLoop: false,
       gainAdjust: -10,
@@ -829,7 +829,7 @@ exports.stageData = [
   
   {
     play: {
-      name: 'stage1_1',
+      name: 'rec1_1',
       speed: -1,
       gainAdjust: -10
     },
@@ -838,7 +838,7 @@ exports.stageData = [
 
   { // rite of spring clip
     midi: {
-      sampleName: 'stage2_2',
+      sampleName: 'rec2_2',
       fileName: '6random2.mid',
       useLoop: false,
       gainAdjust: -40,
@@ -856,13 +856,13 @@ exports.stageData = [
     loop: [
       {
         channel: 1,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.11,
         gainAdjust: 5
       },
       {
         channel: 2,
-        name: 'stage4_1',
+        name: 'rec4_1',
         speed: 0.005,
         pitch: -2,
         gainAdjust: 5
@@ -879,7 +879,7 @@ exports.stageData = [
 
   {
     midi: { // moonlight sonata clip
-      sampleName: 'stage3_1',
+      sampleName: 'rec3_1',
       fileName: '6random1.mid',
       useLoop: true,
       gainAdjust: -5,
@@ -895,7 +895,7 @@ exports.stageData = [
 
   { // movement 2 clip
     midi: {
-      sampleName: 'stage2_2',
+      sampleName: 'rec2_2',
       fileName: 'fast 1 a1.mid',
       useLoop: false,
       gainAdjust: -10,
@@ -913,19 +913,19 @@ exports.stageData = [
     play: [
       {
         channel: 1,
-        name: 'stage2_1',
+        name: 'rec2_1',
         speed: 0.5,
         gainAdjust: -50
       },
       {
         channel: 2,
-        name: 'stage3_8',
+        name: 'rec3_8',
         speed: 1,
         gainAdjust: -50
       },
       {
         channel: 3,
-        name: 'stage5_2',
+        name: 'rec5_2',
         speed: 0.2,
         gainAdjust: -50
       }
@@ -933,13 +933,13 @@ exports.stageData = [
     loop: [
       {
         channel: 1,
-        name: 'stage4_2',
+        name: 'rec4_2',
         speed: 2,
         gainAdjust: -50
       },
       {
         channel: 2,
-        name: 'stage5_1',
+        name: 'rec5_1',
         speed: 3.5,
         gainAdjust: -50
       }

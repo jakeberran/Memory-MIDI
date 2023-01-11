@@ -1,6 +1,8 @@
 var midiFolder;
 var stageData;
 var movements;
+var dir;
+var prerecs = [];
 
 function load(jsFilename) {
   // post(jsFilename)
@@ -15,7 +17,7 @@ function load(jsFilename) {
       if (typeof stageDatum ==  'number') {
         movements[stageDatum] = {
           stageNum: i - stageDatum + 1, // so movement 1 starts at 0, and each one is adjusted by one more
-          enabled: true // TODO when to change enabled
+          enabled: true 
         }
       }
       else {
@@ -23,8 +25,6 @@ function load(jsFilename) {
       }
     }
     // post('split length', stageData.length, '+', Object.keys(movements).length)
-    // TODO break it up into stageData (filtered to remove plain ints) and movementIndices
-    // TODO (which is the index of that one minus whatever movement number that is)
     // TODO also have this edit the values of the number hotkey stage numbers
     this.patcher.getnamed('numOfStages').message(stageData.length)
   } catch (error) {
@@ -35,6 +35,7 @@ function load(jsFilename) {
 
 // Update the movements which are included
 function setMovements() {
+  post(arguments)
   try {
     binaryArray = arguments
 
@@ -54,7 +55,100 @@ function setMovements() {
   }
 }
 
+// List elements in a folder
+function listFolder(path)
+{
+  out = [];
+  
+  f = new Folder(path);
+  while(!f.end)
+  {
+    if (f.filetype != 'fold') {
+      out.push(f.filename); // excludes subfolders, idk why
+    }
+    f.next();
+  }
 
+  return out;
+}
+
+function setPrerecs() {
+  if (arguments[0] == 0) {
+    prerecs = [];
+  }
+  else if (arguments[0] == 1) {
+    prerecs = [];
+    folderPath = arguments[1];
+
+    filenames = listFolder(folderPath);
+
+    prerecQueue = this.patcher.getnamed('prerecQueue')
+    // clear the name queue
+    prerecQueue.message('zlclear');
+
+    // loop over the file names and set up the connections
+    for (i in filenames) {
+      filename = filenames[i];
+      bufferName = filename.split('.')[0];
+
+      if (bufferName) {
+        prerecs.push({
+          name: bufferName,
+          duration: null // appended from sfinfo later
+        })
+
+        // connect the right things
+        bufferImport = this.patcher.getnamed('bufferImport');
+        buffer = null;
+        try {
+          buffer = this.patcher.getnamed('buffer_' + bufferName);
+        }
+        catch (error) {
+          post('Skipping unknown prerecording name', bufferName);
+          continue;
+        }
+        bufferInfo = this.patcher.getnamed('bufferInfo');
+        
+        this.patcher.connect(bufferImport, 0, buffer, 0);
+        this.patcher.connect(buffer, 1, bufferInfo, 0);
+      }
+    }
+
+    // now send all the messages
+    for (i in filenames) {
+      filename = filenames[i];
+      bufferName = filename.split('.')[0];
+
+      if (bufferName) {
+        // send the message to set off everything
+        this.patcher.getnamed('prerecPath').message([bufferName, folderPath + filename])
+      }
+    }
+    
+    this.patcher.getnamed('horribleWorkaround').message('bang'); // todo fix this, last one doesn't get banged properly
+  }
+  else {
+    post('Unexpected first argument in setPrerecs:', arguments[0])
+  }
+}
+
+function loadPrerecLength(ms, name) {
+  for (i in prerecs) {
+    if (prerecs[i].name == name) {
+      // post('MATCH', ms, name)
+      prerecs[i].duration = ms;
+    }
+  }
+
+  post(JSON.stringify(prerecs));
+
+  // clear out the patch cords
+  buffer = this.patcher.getnamed('buffer_' + name);
+  bufferInfo = this.patcher.getnamed('bufferInfo');
+  bufferImport = this.patcher.getnamed('bufferImport');
+  this.patcher.disconnect(buffer, 1, bufferInfo, 0);
+  this.patcher.disconnect(bufferImport, 0, buffer, 0);
+}
 
 
 
@@ -115,6 +209,17 @@ function message(outlet_number, data) {
 
 // function for starting a rec
 function startRec(name) {
+  for (i in prerecs) { // loop over indices
+    prerec = prerecs[i];
+    if (prerec.name == name) {
+      globals.recordings.push({
+        name: name,
+        duration: prerec.duration
+      })
+      return; // leave, don't start recording
+    }
+  }
+  // record normally if not a specified prerec
   message(REC, ['start', name])
   globals.recordings.push({
     name: name,
@@ -403,7 +508,7 @@ function msg_int(n) {
       setDelay(0);
       this.patcher.getnamed('buffer_clearer').message('bang')
     }
-    else if (n > stageData.length) {
+    else if (n > stageData.length) { // because it takes stageData[n-1]
       post('ALL STAGES DONE')
       this.patcher.getnamed('counter').message('dec')
     }
@@ -411,9 +516,15 @@ function msg_int(n) {
       mvts = Object.keys(movements).map(function(key) {
         return movements[key];
       })
-      // post(JSON.stringify(mvts))
+
+      // add on a dummy last stage so that the last movement can be correctly described
+      mvts.push({
+        stageNum: stageData.length + 1,
+        enabled: false
+      }) 
+
       try {
-        for (i = 0; i < mvts.length - 1; i++) { // minus one because we take adjacent pairs of movement stage numbers as the ranges
+        for (i = 0; i < mvts.length-1; i++) {
           if (mvts[i].stageNum <= n && n < mvts[i+1].stageNum) { // is within the ith movement (from that stageNum), inclusive of that movement's stated stageNum
             if (mvts[i].enabled) {
               handleStageChange(n);

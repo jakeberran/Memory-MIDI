@@ -430,7 +430,7 @@
 						"timestretch" : [ 0 ]
 					}
 ,
-					"text" : "groove~ stage3_1"
+					"text" : "groove~ rec3_1"
 				}
 
 			}
