@@ -2,6 +2,8 @@
 
 "Memory MIDI" is a Max for Live device I created as a tool for live acoustic music with electronics. It allows one to record any segments of the piece and play or loop them back later with pitch, speed, and amplitude transformations, or trigger a MIDI file using the recorded segments (with the same possible transformations) as the sample. Thus, whatever the soloist or ensemble plays has the potential to be musical material, audio material, or both.
 
+You can see the bass clarinet piece I used this for at [my website](https://jakeberran.com/musicpages/sdt.html?song=six_etudes_for_bass_clarinet_and_electronics).
+
 Plugin as it appears on the effect rack:
 ![Plugin as it appears on the effect rack](Memory%20MIDI%20screenshot.jpg)
 
