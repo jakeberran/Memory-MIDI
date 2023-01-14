@@ -9,7 +9,7 @@ var robot = require("robotjs");
 
 Max.addHandler("start", () => {
 	Max.post("Starting AutoHotkey script");
-  const ahk = exec('"C:\\Program Files\\AutoHotkey\\AutoHotkey.exe" "C:\\Users\\jacob\\Local Documents\\Ableton\\User Library\\Presets\\Audio Effects\\Max Audio Effect\\Memory MIDI\\remapPageUpDown.ahk"')
+  const ahk = exec(`"C:\\Program Files\\AutoHotkey\\AutoHotkey.exe" "${__dirname}\\remapPageUpDown.ahk"`)
 });
 
 Max.addHandler("stop", async () => {
