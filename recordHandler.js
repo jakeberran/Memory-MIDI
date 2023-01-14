@@ -24,6 +24,11 @@ function endRec() {
 
 // function for starting a rec
 function startRec(name) {
+  // clear that buffer
+  buffer = this.patcher.getnamed('buffer_' + name);
+  buffer.message('clear');
+
+  // TODO autocompute buffers
   var msg = ['set', name];
   message(MSG_REC, msg);
   outlet(TOGGLE_REC, 1);

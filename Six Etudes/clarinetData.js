@@ -62,10 +62,10 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 a1.mid',
       useLoop: false,
-      gainAdjust: -8,
+      gainAdjust: 10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
-      transpose: -7
+      transpose: -15
     }
   },
 
@@ -74,10 +74,10 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 b1.mid',
       useLoop: false,
-      gainAdjust: -8,
+      gainAdjust: 10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
-      transpose: -7
+      transpose: -15
     }
   },
   
@@ -86,7 +86,7 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 c1.mid',
       useLoop: true,
-      gainAdjust: -8,
+      gainAdjust: 10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 0.5,
       transpose: 12
@@ -98,7 +98,7 @@ exports.stageData = [
       sampleName: 'rec2_1',
       fileName: 'fast 1 c2.mid',
       useLoop: true,
-      gainAdjust: 0,
+      gainAdjust: 10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 0.25,
       transpose: 24
@@ -110,7 +110,7 @@ exports.stageData = [
       sampleName: 'rec2_1',
       fileName: 'fast 1 a2.mid',
       useLoop: false,
-      gainAdjust: 0,
+      gainAdjust: 10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: 0
@@ -122,10 +122,10 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 a3.mid',
       useLoop: false,
-      gainAdjust: 0,
+      gainAdjust: 10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
-      transpose: -7
+      transpose: -15
     }
   },
 
@@ -134,7 +134,7 @@ exports.stageData = [
       sampleName: 'rec2_1',
       fileName: 'fast 1 end.mid',
       useLoop: false,
-      gainAdjust: 0,
+      gainAdjust: 10,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: 0

@@ -508,6 +508,9 @@ function msg_int(n) {
       setDelay(0);
       this.patcher.getnamed('buffer_clearer').message('bang')
     }
+    else if (n === stageData.length) {
+      handleStageChange(n);
+    }
     else if (n > stageData.length) { // because it takes stageData[n-1]
       post('ALL STAGES DONE')
       this.patcher.getnamed('counter').message('dec')
@@ -532,7 +535,7 @@ function msg_int(n) {
             else if (mvts[i+1]) { // movement not enabled, so recursively go to the next movement start if applicable
               post('SKIPPING MVT', i+1)
               cntr = this.patcher.getnamed('counter')
-              cntr.message(['set', mvts[i+1].stageNum])
+              cntr.message(['set', Math.min(mvts[i+1].stageNum, stageData.length)])
               cntr.message('bang')
             }
             break; // stop the loop once we've found the movement we're potentially in
