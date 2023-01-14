@@ -62,7 +62,7 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 a1.mid',
       useLoop: false,
-      gainAdjust: 10,
+      gainAdjust: 12,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: -15
@@ -74,7 +74,7 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 b1.mid',
       useLoop: false,
-      gainAdjust: 10,
+      gainAdjust: 12,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: -15
@@ -86,7 +86,7 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 c1.mid',
       useLoop: true,
-      gainAdjust: 10,
+      gainAdjust: 12,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 0.5,
       transpose: 12
@@ -98,7 +98,7 @@ exports.stageData = [
       sampleName: 'rec2_1',
       fileName: 'fast 1 c2.mid',
       useLoop: true,
-      gainAdjust: 10,
+      gainAdjust: 12,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 0.25,
       transpose: 24
@@ -110,7 +110,7 @@ exports.stageData = [
       sampleName: 'rec2_1',
       fileName: 'fast 1 a2.mid',
       useLoop: false,
-      gainAdjust: 10,
+      gainAdjust: 12,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: 0
@@ -122,7 +122,7 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: 'fast 1 a3.mid',
       useLoop: false,
-      gainAdjust: 10,
+      gainAdjust: 12,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: -15
@@ -134,7 +134,7 @@ exports.stageData = [
       sampleName: 'rec2_1',
       fileName: 'fast 1 end.mid',
       useLoop: false,
-      gainAdjust: 10,
+      gainAdjust: 0,
       tempo: MVT_2_TEMPO,
       sampleSpeed: 1,
       transpose: 0
@@ -162,10 +162,10 @@ exports.stageData = [
       sampleName: 'rec3_1',
       fileName: 'mvt 3 a.mid',
       useLoop: false,
-      gainAdjust: -2,
+      gainAdjust: -5,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
-      transpose: 9,
+      transpose: 21,
       noteOffDelay: 80
     },
 
@@ -189,10 +189,10 @@ exports.stageData = [
       sampleName: 'rec3_1',
       fileName: 'mvt 3 b.mid',
       useLoop: false,
-      gainAdjust: -2,
+      gainAdjust: -5,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
-      transpose: 9,
+      transpose: 21,
       noteOffDelay: 80
     }
   },
@@ -202,10 +202,10 @@ exports.stageData = [
       sampleName: 'rec3_2',
       fileName: 'mvt 3 c.mid',
       useLoop: false,
-      gainAdjust: -2,
+      gainAdjust: -5,
       tempo: MVT_3_TEMPO,
       sampleSpeed: -1,
-      transpose: 2,
+      transpose: 14,
       noteOffDelay: 50
     }
   },
@@ -239,7 +239,7 @@ exports.stageData = [
       fileName: 'mvt 3 d.mid', // first part of B section
       sampleName: 'rec3_3',
       useLoop: true,
-      gainAdjust: -35,
+      gainAdjust: -30,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 2,
       transpose: -5, // +7 minus an octave
@@ -267,7 +267,7 @@ exports.stageData = [
       fileName: 'mvt 3 e.mid', // b section of b section
       sampleName: 'rec3_4', // 542124
       useLoop: true,
-      gainAdjust: -35,
+      gainAdjust: -30,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 2,
       transpose: -11, // +1 minus an octave bc double speed
@@ -290,7 +290,7 @@ exports.stageData = [
       fileName: 'mvt 3 f.mid',
       sampleName: 'rec3_6',
       useLoop: false,
-      gainAdjust: 10,
+      gainAdjust: 5,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 21,
@@ -334,7 +334,7 @@ exports.stageData = [
       fileName: 'mvt 3 h.mid',
       sampleName: 'rec3_8',
       useLoop: false,
-      gainAdjust: -15,
+      gainAdjust: -25,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 21,
@@ -378,7 +378,7 @@ exports.stageData = [
       fileName: 'mvt 3 j.mid',
       sampleName: 'rec3_10', 
       useLoop: false,
-      gainAdjust: 0,
+      gainAdjust: 5,
       tempo: MVT_3_TEMPO,
       sampleSpeed: 1,
       transpose: 9,
@@ -841,7 +841,7 @@ exports.stageData = [
       sampleName: 'rec2_2',
       fileName: '6random2.mid',
       useLoop: false,
-      gainAdjust: -40,
+      gainAdjust: -50,
       tempo: 110,
       sampleSpeed: 1,
       transpose: -7
