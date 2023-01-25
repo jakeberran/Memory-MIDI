@@ -78,30 +78,25 @@ function startMidi(sampleName, fileName, useLoop, sampleSpeed, tempo, gainAdjust
   }
 
   // set the start point
-  if (sampleSpeed < 0) {
-    if (useLoop) {
-      messageGroove(['loopend', 0])
+  if (recording) {
+    if (sampleSpeed < 0) {
+      if (useLoop) {
+        messageGroove(['loopend', 0])
+      }
+      this.patcher.getnamed('midiSampleStartPoint').message(['set', recording.duration])
     }
-    this.patcher.getnamed('midiSampleStartPoint').message(['set', recording.duration])
-  }
-  else {
-    if (useLoop) {
-      messageGroove(['loopend', recording.duration])
+    else {
+      if (useLoop) {
+        messageGroove(['loopend', recording.duration])
+      }
+      this.patcher.getnamed('midiSampleStartPoint').message(['set', 0])
     }
-    this.patcher.getnamed('midiSampleStartPoint').message(['set', 0])
   }
 
   // start the midi playback, depends on loop or not
   if (useLoop) {
     messageGroove('startloop')
   }
-  // else {
-  //   post('shouldnt be looping')
-  //   // if it exists then grab its duration and use that to calculate how long the playback should take
-  //   if (recording) {
-  //     // messageGroove(['loopend', recording.duration]); // set the end point to the length of the recording
-  //   }
-  // }
   outlet(START, 'bang');
 }
 

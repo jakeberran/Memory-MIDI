@@ -41,18 +41,18 @@ function startPlay(name, speed, transpose, gainAdjust, channel) {
     }
   }
 
-  // set the start point
-  if (speed < 0) {
-    playStartPoint = this.patcher.getnamed('play' + String(channel) + 'StartPoint')
-    playStartPoint.message(['set', recording.duration])
-  }
-  else {
-    playStartPoint = this.patcher.getnamed('play' + String(channel) + 'StartPoint')
-    playStartPoint.message(['set', 0])
-  }
-
   // if it exists then grab its duration and use that to calculate how long the playback should take
   if (recording) {
+    // set the start point
+    if (speed < 0) {
+      playStartPoint = this.patcher.getnamed('play' + String(channel) + 'StartPoint')
+      playStartPoint.message(['set', recording.duration])
+    }
+    else {
+      playStartPoint = this.patcher.getnamed('play' + String(channel) + 'StartPoint')
+      playStartPoint.message(['set', 0])
+    }
+
     message(MSG_PLAY, ['loopend', recording.duration]); // set the end point to the length of the recording
     outlet(START_PLAY, 1);
   }

@@ -2,7 +2,11 @@ var midiFolder;
 var stageData;
 var movements;
 var dir;
-var prerecs = [];
+globals = new Global('globals');
+globals.prerecs = []
+globals.prerecsEnabled = false;
+globals.prerecsFolderPath = '';
+globals.currentPrerecIndex = 0;
 
 function load(jsFilename) {
   // post(jsFilename)
@@ -72,13 +76,59 @@ function listFolder(path)
   return out;
 }
 
+function setPrerec(i) {
+  post('Setting prerec number', i)
+  globals.currentPrerecIndex = i;
+  prerecQueue = this.patcher.getnamed('prerecQueue')
+  horribleWorkaround = this.patcher.getnamed('horribleWorkaround')
+
+  if (i >= globals.prerecs.length) {
+    post('\nDone with setting prerecs\n', JSON.stringify(globals.prerecs))
+    this.patcher.getnamed('prerecIndicator').message(1)
+    return
+  }
+
+  pr = globals.prerecs[i]
+
+  if (!pr) {
+    setPrerec(i+1)
+  }
+  
+  // connect the right things
+  bufferImport = this.patcher.getnamed('bufferImport');
+  buffer = null;
+  try {
+    buffer = this.patcher.getnamed('buffer_' + pr.bufferName);
+  }
+  catch (error) {
+    post('Skipping unknown prerecording name', pr.bufferName);
+    setPrerec(i+1)
+    return
+  }
+  
+  this.patcher.connect(bufferImport, 0, buffer, 0);
+  this.patcher.connect(buffer, 1, horribleWorkaround, 0);
+
+  this.patcher.getnamed('prerecPath').message(pr.path) // send "prepend import" to start the chain
+
+  this.patcher.disconnect(bufferImport, 0, buffer, 0);
+}
+
 function setPrerecs() {
+  this.patcher.getnamed('prerecIndicator').message(0)
+
+  globals.currentPrerecIndex = 0;
+
   if (arguments[0] == 0) {
-    prerecs = [];
+    globals.prerecs = [];
+    post('Stopped using prerecs.')
+
+    globals.prerecsEnabled = false;
   }
   else if (arguments[0] == 1) {
-    prerecs = [];
+    globals.prerecs = [];
     folderPath = arguments[1];
+    globals.prerecsFolderPath = folderPath;
 
     filenames = listFolder(folderPath);
 
@@ -86,68 +136,59 @@ function setPrerecs() {
     // clear the name queue
     prerecQueue.message('zlclear');
 
-    // loop over the file names and set up the connections
+    // Preprocessing - fill out the global prerecs object and queue
     for (i in filenames) {
       filename = filenames[i];
       bufferName = filename.split('.')[0];
 
       if (bufferName) {
-        prerecs.push({
-          name: bufferName,
+        globals.prerecs.push({
+          bufferName: bufferName,
+          path: folderPath + filename,
           duration: null // appended from sfinfo later
         })
-
-        // connect the right things
-        bufferImport = this.patcher.getnamed('bufferImport');
-        buffer = null;
-        try {
-          buffer = this.patcher.getnamed('buffer_' + bufferName);
-        }
-        catch (error) {
-          post('Skipping unknown prerecording name', bufferName);
-          continue;
-        }
-        bufferInfo = this.patcher.getnamed('bufferInfo');
-        
-        this.patcher.connect(bufferImport, 0, buffer, 0);
-        this.patcher.connect(buffer, 1, bufferInfo, 0);
       }
+
+      // Add to queue
+      prerecQueue.message(bufferName);
     }
 
-    // now send all the messages
-    for (i in filenames) {
-      filename = filenames[i];
-      bufferName = filename.split('.')[0];
+    // Now load the buffers and set the lengths correctly
+    // It will call itself recursively
+    setPrerec(0);
 
-      if (bufferName) {
-        // send the message to set off everything
-        this.patcher.getnamed('prerecPath').message([bufferName, folderPath + filename])
-      }
-    }
     
-    this.patcher.getnamed('horribleWorkaround').message('bang'); // todo fix this, last one doesn't get banged properly
+
+    globals.prerecsEnabled = true;
   }
+
   else {
     post('Unexpected first argument in setPrerecs:', arguments[0])
+
+    globals.prerecsEnabled = false;
   }
 }
 
-function loadPrerecLength(ms, name) {
-  for (i in prerecs) {
-    if (prerecs[i].name == name) {
-      // post('MATCH', ms, name)
-      prerecs[i].duration = ms;
+function loadPrerecLength(ms, bufferName) {
+
+  post('\nloadPrerecLength', ms, bufferName)
+  for (i in globals.prerecs) {
+    if (globals.prerecs[i].bufferName == bufferName) {
+      // post('MATCH', ms, bufferName)
+      globals.prerecs[i].duration = ms;
+      break;
     }
   }
 
-  post(JSON.stringify(prerecs));
+  // post(JSON.stringify(globals.prerecs));
 
   // clear out the patch cords
-  buffer = this.patcher.getnamed('buffer_' + name);
-  bufferInfo = this.patcher.getnamed('bufferInfo');
-  bufferImport = this.patcher.getnamed('bufferImport');
-  this.patcher.disconnect(buffer, 1, bufferInfo, 0);
-  this.patcher.disconnect(bufferImport, 0, buffer, 0);
+  buffer = this.patcher.getnamed('buffer_' + bufferName);
+  horribleWorkaround = this.patcher.getnamed('horribleWorkaround')
+
+  this.patcher.disconnect(buffer, 1, horribleWorkaround, 0);
+
+  setPrerec(globals.currentPrerecIndex + 1);
 }
 
 
@@ -209,13 +250,15 @@ function message(outlet_number, data) {
 
 // function for starting a rec
 function startRec(name) {
-  for (i in prerecs) { // loop over indices
-    prerec = prerecs[i];
+  for (i in globals.prerecs) { // loop over indices
+    prerec = globals.prerecs[i];
     if (prerec.name == name) {
       globals.recordings.push({
         name: name,
         duration: prerec.duration
       })
+
+      post(JSON.stringify(globals.recordings))
       return; // leave, don't start recording
     }
   }
@@ -507,14 +550,21 @@ function msg_int(n) {
       setReverb(0);
       setDelay(0);
       this.patcher.getnamed('buffer_clearer').message('bang')
+
+      if (globals.prerecsEnabled) {
+        setPrerecs(1, globals.prerecsFolderPath)
+      }
     }
+
     else if (n === stageData.length) {
       handleStageChange(n);
     }
+
     else if (n > stageData.length) { // because it takes stageData[n-1]
       post('ALL STAGES DONE')
       this.patcher.getnamed('counter').message('dec')
     }
+
     else {
       mvts = Object.keys(movements).map(function(key) {
         return movements[key];
