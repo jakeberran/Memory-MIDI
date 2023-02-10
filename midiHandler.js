@@ -28,7 +28,8 @@ function messageGroove(message) {
 }
 
 function startMidi(sampleName, fileName, useLoop, sampleSpeed, tempo, gainAdjust, transpose, noteOffDelay) {
-
+  stopMidi();
+  
   // set the buffer to be used
   messageGroove(['set', sampleName])
   
@@ -83,13 +84,14 @@ function startMidi(sampleName, fileName, useLoop, sampleSpeed, tempo, gainAdjust
       if (useLoop) {
         messageGroove(['loopend', 0])
       }
-      this.patcher.getnamed('midiSampleStartPoint').message(['set', recording.duration])
+      post('SETTING START POINT', recording.duration)
+      this.patcher.getnamed('midiSampleStartPoint').message(recording.duration)
     }
     else {
       if (useLoop) {
         messageGroove(['loopend', recording.duration])
       }
-      this.patcher.getnamed('midiSampleStartPoint').message(['set', 0])
+      this.patcher.getnamed('midiSampleStartPoint').message(0)
     }
   }
 

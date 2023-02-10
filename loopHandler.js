@@ -28,7 +28,6 @@ function startLoop(name, speed, pitch, gainAdjust) {
   var pitchMsg = Math.pow(2, (pitch / 12)) / Math.abs(speed)
   outlet(SET_LOOP_SPEED, speedMsg);
   message(SET_LOOP_PITCH, pitchMsg);
-  post()
   outlet(SET_GAIN_ADJUST, gainAdjust + 128);
   message(MSG_LOOP, ['loopinterp', 1])
 
